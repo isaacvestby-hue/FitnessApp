@@ -42,8 +42,13 @@ def to_km(value, unit):
     return {"km": value, "mi": value * 1.609344, "m": value / 1000, "yd": value * 0.0009144}.get(unit, value)
 
 
+RENAMES = {"TraditionalStrengthTraining": "Strength Training", "FunctionalStrengthTraining": "Functional Strength"}
+
+
 def activity_name(hk_type):
     name = hk_type.removeprefix("HKWorkoutActivityType")
+    if name in RENAMES:
+        return RENAMES[name]
     return "".join(" " + c if c.isupper() and i else c for i, c in enumerate(name)).strip()
 
 

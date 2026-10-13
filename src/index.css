@@ -88,6 +88,9 @@ input.big {
 
 select {
   width: auto;
+  max-width: 55%;
+  padding: 6px 10px;
+  font-size: 15px;
 }
 
 button {
