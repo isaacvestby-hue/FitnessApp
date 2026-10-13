@@ -277,6 +277,7 @@ button.icon {
   color: var(--muted);
   font-size: 11px;
   padding: 8px 0 6px;
+  min-width: 0;
   border-radius: 0;
 }
 
@@ -294,4 +295,111 @@ button.icon {
   justify-content: center;
   min-height: 100vh;
   padding-bottom: 16px;
+}
+
+button.wide {
+  width: 100%;
+}
+
+button.danger {
+  color: var(--danger);
+}
+
+.accent {
+  color: var(--accent);
+}
+
+.col {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.clip {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list li.tap {
+  cursor: pointer;
+}
+
+.list li > .col {
+  flex: 1;
+}
+
+.list.spaced {
+  margin-top: 12px;
+}
+
+.title-input {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+textarea.note {
+  font: inherit;
+  color: var(--text);
+  border: 0;
+  width: 100%;
+  min-height: 80px;
+  resize: vertical;
+}
+
+.sets {
+  display: grid;
+  grid-template-columns: 32px 1fr 1fr 28px;
+  gap: 8px;
+  align-items: center;
+}
+
+.sets input {
+  text-align: center;
+  padding: 8px;
+}
+
+.set-no {
+  text-align: center;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+.grid4 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.day-nav {
+  margin-bottom: 8px;
+}
+
+.day-nav button {
+  font-size: 28px;
+  padding: 0 12px;
+}
+
+.bar {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.track {
+  height: 8px;
+  border-radius: 4px;
+  background: var(--bg);
+  overflow: hidden;
+}
+
+.fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 4px;
+}
+
+.fill.over {
+  background: var(--danger);
 }

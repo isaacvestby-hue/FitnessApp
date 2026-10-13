@@ -39,3 +39,51 @@ export type DailyMetrics = {
 }
 
 export type Unit = 'lb' | 'kg'
+
+export type LiftSet = {
+  id: string
+  session_id: string
+  exercise: string
+  position: number
+  reps: number
+  weight_kg: number
+}
+
+export type LiftSession = {
+  id: string
+  performed_on: string
+  name: string | null
+  note: string | null
+  lift_sets: LiftSet[]
+}
+
+export type Food = {
+  id: string
+  name: string
+  brand: string | null
+  serving: string
+  kcal: number
+  protein_g: number
+  carbs_g: number
+  fat_g: number
+}
+
+export type FoodLog = {
+  id: string
+  eaten_on: string
+  meal: string
+  food_id: string | null
+  name: string
+  servings: number
+  kcal: number
+  protein_g: number
+  carbs_g: number
+  fat_g: number
+}
+
+export type Targets = {
+  kcal_target: number | null
+  protein_target_g: number | null
+  carbs_target_g: number | null
+  fat_target_g: number | null
+}
