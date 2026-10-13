@@ -56,17 +56,25 @@ create table if not exists public.profiles (
   updated_at timestamptz not null default now()
 );
 
-do $$
-declare t text;
-begin
-  foreach t in array array['weigh_ins', 'workouts', 'daily_metrics', 'profiles'] loop
-    execute format('alter table public.%I enable row level security', t);
-    execute format('drop policy if exists "own rows" on public.%I', t);
-    execute format(
-      'create policy "own rows" on public.%I for all to authenticated
-         using (user_id = auth.uid()) with check (user_id = auth.uid())', t);
-  end loop;
-end $$;
+alter table public.weigh_ins enable row level security;
+drop policy if exists "own rows" on public.weigh_ins;
+create policy "own rows" on public.weigh_ins for all to authenticated
+  using (user_id = auth.uid()) with check (user_id = auth.uid());
+
+alter table public.workouts enable row level security;
+drop policy if exists "own rows" on public.workouts;
+create policy "own rows" on public.workouts for all to authenticated
+  using (user_id = auth.uid()) with check (user_id = auth.uid());
+
+alter table public.daily_metrics enable row level security;
+drop policy if exists "own rows" on public.daily_metrics;
+create policy "own rows" on public.daily_metrics for all to authenticated
+  using (user_id = auth.uid()) with check (user_id = auth.uid());
+
+alter table public.profiles enable row level security;
+drop policy if exists "own rows" on public.profiles;
+create policy "own rows" on public.profiles for all to authenticated
+  using (user_id = auth.uid()) with check (user_id = auth.uid());
 
 create index if not exists workouts_user_started on public.workouts (user_id, started_at desc);
 create index if not exists weigh_ins_user_day on public.weigh_ins (user_id, measured_on desc);
